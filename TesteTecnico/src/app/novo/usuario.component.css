@@ -1,0 +1,16 @@
+.row{
+  padding: 10px;
+}
+
+.btn{
+  width: 150px;
+}
+
+.alinharBotoes{
+  float: right;
+}
+
+.formulario{
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}

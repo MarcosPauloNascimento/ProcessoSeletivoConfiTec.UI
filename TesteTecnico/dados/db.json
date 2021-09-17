@@ -1,0 +1,20 @@
+{
+  "usuarios":[
+    {
+      "id": 1,
+      "name": "string",
+      "lastName": "string",
+      "email": "user@example.com",
+      "birthDate": "2021-09-17T05:35:49.357Z",
+      "schooling": 1
+    },
+    {
+      "id": 2,
+      "name": "string",
+      "lastName": "string",
+      "email": "user@example.com",
+      "birthDate": "2021-09-17T05:35:49.357Z",
+      "schooling": 1
+    }
+  ]
+}

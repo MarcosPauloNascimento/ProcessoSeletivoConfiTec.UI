@@ -1,4 +1,6 @@
+import { UsuarioService } from './services/usuario.service';
 import { Component } from '@angular/core';
+import { $$ } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TesteTecnico';
+
+  constructor(private service: UsuarioService){}
+
+  salvarUsuario($event){
+    this.service.adicionar($event);
+  }
 }

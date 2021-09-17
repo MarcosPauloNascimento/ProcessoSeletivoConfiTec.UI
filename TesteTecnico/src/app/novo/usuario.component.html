@@ -1,0 +1,68 @@
+<div class="container">
+  <form class="formulario">
+    <div class="row md-3">
+      <h3>Gerenciar Usuarios</h3>
+      <div class="col md-3">
+        <label for="inputNome" class="visually-hidden">Nome</label>
+        <input
+          class="form-control"
+          id="inputNome"
+          placeholder="Nome"
+          [(ngModel)]="usuario.nome"
+          name="nome"
+        />
+      </div>
+      <div class="col md-3">
+        <label for="inputSobrenome" class="visually-hidden">Sobrenome</label>
+        <input
+          class="form-control"
+          id="inputSobrenome"
+          placeholder="Sobrenome"
+          [(ngModel)]="usuario.sobrenome"
+          name="sobrenome"
+        />
+      </div>
+      <div class="form-floating col-md-3 md-3">
+        <input
+        type="date"
+        class="form-control"
+        id="inputData"
+        placeholder="Data Nascimento"
+        [(ngModel)]="usuario.dataNascimento"
+        name="data"
+        />
+        <label for="inputData">Data de Nascimento</label>
+      </div>
+    </div>
+    <div class="row md-3">
+      <div class="col md-3">
+        <label for="inputEmail" class="visually-hidden">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          placeholder="Email"
+          [(ngModel)]="usuario.email"
+          name="email"
+        />
+      </div>
+      <div class="col-md-3 md-3">
+        <label for="inputEscolaridade" class="visually-hidden">Escolaridade</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected >Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <div class="row alinharBotoes">
+    <div class="col">
+      <button (click)="novoUsuario()" class="btn btn-primary">Cancelar</button>
+    </div>
+    <div class="col">
+      <button (click)="salvarUsuario()" class="btn btn-success">Salvar</button>
+    </div>
+  </div>
+</div>

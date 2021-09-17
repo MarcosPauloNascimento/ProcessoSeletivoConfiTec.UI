@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.container{
+  max-width: 1000px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.formulario{
+  padding: 15px;
+}

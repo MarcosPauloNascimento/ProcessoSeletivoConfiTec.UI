@@ -1,0 +1,40 @@
+<div class="container">
+  <form class="formulario">
+    <div class="row md-3">
+      <div class="col">
+        <label for="inputPesquisa" class="visually-hidden">Pesquisar</label>
+        <input
+          class="form-control"
+          id="inputPesquisa"
+          placeholder="Pesquisar"
+          [(ngModel)]="textoPesquisa"
+          name="pesquisa"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col-md-auto">Nome</th>
+              <th scope="col-md-auto">Data de Nascimento</th>
+              <th scope="col-md-auto">Escolaridade</th>
+              <th scope="col-md-auto">Email</th>
+              <th scope="col-md-auto"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <td>{{usuario.Name}} {{usuario.LastName}}</td>
+              <td>{{usuario.BirthDate | date: "shortDate"}}</td>
+              <td>{{usuario.Schooling}}</td>
+              <td>{{usuario.Email}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
