@@ -21,16 +21,26 @@
               <th scope="col-md-auto">Data de Nascimento</th>
               <th scope="col-md-auto">Escolaridade</th>
               <th scope="col-md-auto">Email</th>
-              <th scope="col-md-auto"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let usuario of usuarios">
-              <td>{{usuario.Name}} {{usuario.LastName}}</td>
-              <td>{{usuario.BirthDate | date: "shortDate"}}</td>
-              <td>{{usuario.Schooling}}</td>
-              <td>{{usuario.Email}}</td>
-              <td></td>
+              <td>{{ usuario.name }} {{ usuario.lastName }}</td>
+              <td>{{ usuario.birthDate | date: "shortDate" }}</td>
+              <td>{{ usuario.schooling }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>
+                <button (click)="removerUsuario()" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+              </td>
+              <td>
+                <button (click)="editarUsuario()" class="btn btn-success">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

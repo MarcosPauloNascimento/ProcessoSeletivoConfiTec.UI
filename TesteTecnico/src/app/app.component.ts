@@ -11,8 +11,4 @@ export class AppComponent {
   title = 'TesteTecnico';
 
   constructor(private service: UsuarioService){}
-
-  salvarUsuario($event){
-    this.service.adicionar($event);
-  }
 }

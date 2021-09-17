@@ -20,15 +20,8 @@ export class ListarUsuarioComponent implements OnInit {
   }
 
   getAll(){
-    this.service.getAll().subscribe((usuarios: any[]) => {
-      console.log("entrou getAll",usuarios);
-      //this.usuarios = usuarios;
-    },
-    error => {
-      console.log(error);
+    this.service.getAll().subscribe((usuarios: User[]) => {
+      this.usuarios = usuarios;
     });
-
   }
-
-
 }

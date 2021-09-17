@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/usuario.model';
 
-const baseUrl = 'https://localhost:44392/api/v1/User';
-const baseUrl1 = 'http://localhost:3000/usuarios';
+const baseUrl = 'https://localhost:44392/api/User';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +14,9 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {
     this.listaUsuarios = []
-   }
+  }
 
-
-
-  adicionar(usuario: any){
+  adicionar(usuario: any) {
     this.listaUsuarios.push(usuario);
   }
 

@@ -9,14 +9,19 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 export class NovoUsuarioComponent {
   @Output() aoSalvar = new EventEmitter<any>();
-  usuario: User = {
-    Name: '',
-    LastName: '',
-    Email: '',
-    BirthDate: '',
-    Schooling: ''
-  };
 
+  escolaridades: any = ['Infantil','Fundamental', 'Medio', 'Superior'];
+
+  errorMesages: any[] = [];
+
+  usuario: User = {
+    id: 0,
+    name: '',
+    lastName: '',
+    email: '',
+    birthDate: '',
+    schooling: ''
+  };
   submitted = false;
 
   constructor(private usuarioService: UsuarioService) { }
@@ -32,22 +37,32 @@ export class NovoUsuarioComponent {
           this.submitted = true;
           this.novoUsuario();
         },
-        error => {
-          console.log(error);
+        (error) => {
+          this.validarErros(error.error.errors);
         });
-
     this.novoUsuario();
+  }
+
+  validarErros(errors: any){
+
+    if (errors.Name){
+      errors.Name.map((e) => {
+        this.errorMesages.push(e)
+      });
+      console.log(this.errorMesages);
+    }
 
   }
 
   novoUsuario(): void {
     this.submitted = false;
     this.usuario = {
-      Name: '',
-      LastName: '',
-      Email: '',
-      BirthDate: '',
-      Schooling: ''
+      id: 0,
+      name: '',
+      lastName: '',
+      email: '',
+      birthDate: '',
+      schooling: ''
     };
   }
 

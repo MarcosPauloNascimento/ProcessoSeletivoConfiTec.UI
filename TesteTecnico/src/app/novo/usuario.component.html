@@ -8,7 +8,7 @@
           class="form-control"
           id="inputNome"
           placeholder="Nome"
-          [(ngModel)]="usuario.nome"
+          [(ngModel)]="usuario.name"
           name="nome"
         />
       </div>
@@ -18,20 +18,19 @@
           class="form-control"
           id="inputSobrenome"
           placeholder="Sobrenome"
-          [(ngModel)]="usuario.sobrenome"
+          [(ngModel)]="usuario.lastName"
           name="sobrenome"
         />
       </div>
-      <div class="form-floating col-md-3 md-3">
+      <div class="col-md-3 md-3">
         <input
         type="date"
         class="form-control"
         id="inputData"
         placeholder="Data Nascimento"
-        [(ngModel)]="usuario.dataNascimento"
+        [(ngModel)]="usuario.birthDate"
         name="data"
         />
-        <label for="inputData">Data de Nascimento</label>
       </div>
     </div>
     <div class="row md-3">
@@ -47,12 +46,9 @@
         />
       </div>
       <div class="col-md-3 md-3">
-        <label for="inputEscolaridade" class="visually-hidden">Escolaridade</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected >Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select class="form-select" name="schooling" [(ngModel)]="usuario.schooling">
+          <option disabled>Selecione uma Escolaridade</option>
+          <option *ngFor="let e of escolaridades" [ngValue]="e">{{e}}</option>
         </select>
       </div>
     </div>
