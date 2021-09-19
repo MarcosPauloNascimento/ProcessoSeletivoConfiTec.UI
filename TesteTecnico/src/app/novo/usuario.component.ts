@@ -10,60 +10,68 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NovoUsuarioComponent {
   @Output() aoSalvar = new EventEmitter<any>();
 
-  escolaridades: any = ['Infantil','Fundamental', 'Medio', 'Superior'];
-
-  errorMesages: any[] = [];
-
+  escolaridades: any = ['Infantil', 'Fundamental', 'Medio', 'Superior'];
+  mensagensValidacao: '';
+  toasts: any[] = [];
   usuario: User = {
     id: 0,
-    name: '',
-    lastName: '',
+    nome: '',
+    sobrenome: '',
     email: '',
-    birthDate: '',
-    schooling: ''
+    dataNascimento: '',
+    escolaridade: ''
   };
   submitted = false;
 
   constructor(private usuarioService: UsuarioService) { }
 
   salvarUsuario(): void {
+    this.validarParaSalvar();
+    if (!this.mensagensValidacao) {
+      const data = this.usuario;
 
-    const data = this.usuario;
-
-    this.usuarioService.create(data)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.submitted = true;
-          this.novoUsuario();
-        },
-        (error) => {
-          this.validarErros(error.error.errors);
-        });
-    this.novoUsuario();
+      this.usuarioService.create(data)
+        .subscribe(
+          response => {
+            console.log(response);
+            this.submitted = true;
+            this.novoUsuario();
+          },
+          (error) => {
+            this.validarErrosRetorno(error.error.errors);
+          });
+    }else{
+      console.log(this.mensagensValidacao);
+    }
   }
 
-  validarErros(errors: any){
-
-    if (errors.Name){
-      errors.Name.map((e) => {
-        this.errorMesages.push(e)
-      });
-      console.log(this.errorMesages);
+  validarParaSalvar() {
+    this.mensagensValidacao = '';
+    for (let [key, value] of Object.entries(this.usuario)) {
+      if (!value && key !== "id") {
+        this.mensagensValidacao += `Informe o ${key} \n`;
+      }
     }
+  }
 
+  validarErrosRetorno(errors: any) {
+    this.mensagensValidacao = '';
+    for (var i in errors) {
+      if (errors.hasOwnProperty(i)) {
+        this.mensagensValidacao += i + ": " + errors[i] + "\n";
+      }
+    }
   }
 
   novoUsuario(): void {
     this.submitted = false;
     this.usuario = {
       id: 0,
-      name: '',
-      lastName: '',
+      nome: '',
+      sobrenome: '',
       email: '',
-      birthDate: '',
-      schooling: ''
+      dataNascimento: '',
+      escolaridade: ''
     };
   }
-
 }
