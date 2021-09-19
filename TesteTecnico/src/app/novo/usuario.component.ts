@@ -12,7 +12,6 @@ export class NovoUsuarioComponent {
 
   escolaridades: any = ['Infantil', 'Fundamental', 'Medio', 'Superior'];
   mensagensValidacao: '';
-  toasts: any[] = [];
   usuario: User = {
     id: 0,
     nome: '',
