@@ -1,8 +1,8 @@
 export interface User {
   id: any;
-  name: string;
-  lastName: string;
+  nome: string;
+  sobrenome: string;
   email: string;
-  birthDate: string;
-  schooling: string;
+  dataNascimento: string;
+  escolaridade: string;
 }

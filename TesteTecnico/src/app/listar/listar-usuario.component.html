@@ -27,9 +27,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let usuario of usuarios">
-              <td>{{ usuario.name }} {{ usuario.lastName }}</td>
-              <td>{{ usuario.birthDate | date: "shortDate" }}</td>
-              <td>{{ usuario.schooling }}</td>
+              <td>{{ usuario.nome }} {{ usuario.sobreNome }}</td>
+              <td>{{ usuario.dataNascimento | date: "shortDate" }}</td>
+              <td>{{ usuario.escolaridade }}</td>
               <td>{{ usuario.email }}</td>
               <td>
                 <button (click)="removerUsuario()" class="btn btn-danger">
