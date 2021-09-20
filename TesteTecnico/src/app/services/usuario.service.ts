@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/usuario.model';
 
@@ -9,24 +9,21 @@ const baseUrl = 'https://localhost:44392/api/User';
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  private listaUsuarios: any[];
-
-  constructor(private http: HttpClient) {
-    this.listaUsuarios = []
-  }
-
-  adicionar(usuario: any) {
-    this.listaUsuarios.push(usuario);
-  }
+  emitirUsuarioCriado = new EventEmitter();
+  emitirUsuarioSelecionado = new EventEmitter<User>();
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(baseUrl);
   }
 
-  // getById(id: any): Observable<User> {
-  //   return this.http.get(`${baseUrl}/${id}`);
-  // }
+  atualizarLista(){
+    this.emitirUsuarioCriado.emit();
+  }
+
+  detalheUsuario(usuario){
+    this.emitirUsuarioSelecionado.emit(usuario);
+  }
 
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);

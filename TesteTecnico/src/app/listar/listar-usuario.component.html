@@ -1,46 +1,36 @@
 <div class="container">
   <form class="formulario">
-    <div class="row md-3">
-      <div class="col">
-        <label for="inputPesquisa" class="visually-hidden">Pesquisar</label>
-        <input
-          class="form-control"
-          id="inputPesquisa"
-          placeholder="Pesquisar"
-          [(ngModel)]="textoPesquisa"
-          name="pesquisa"
-        />
-      </div>
-    </div>
     <div class="row">
       <div class="col">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col-md-auto">Nome</th>
-              <th scope="col-md-auto">Data de Nascimento</th>
-              <th scope="col-md-auto">Escolaridade</th>
-              <th scope="col-md-auto">Email</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
+              <th class="col-md-3">Nome</th>
+              <th class="col-md-3">Data de Nascimento</th>
+              <th class="col-md-1">Escolaridade</th>
+              <th class="col-md-3">Email</th>
+              <th colspan="2" class="col-md-2"></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let usuario of usuarios">
-              <td>{{ usuario.nome }} {{ usuario.sobreNome }}</td>
+              <td>{{ usuario.nome }} {{ usuario.sobrenome }}</td>
               <td>{{ usuario.dataNascimento | date: "shortDate" }}</td>
               <td>{{ usuario.escolaridade }}</td>
               <td>{{ usuario.email }}</td>
               <td>
-                <button (click)="removerUsuario()" class="btn btn-danger">
+                <button (click)="removerUsuario(usuario.id)" class="btn btn-danger">
                   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </button>
               </td>
               <td>
-                <button (click)="editarUsuario()" class="btn btn-success">
+                <button (click)="visualizarDetalhes(usuario)" class="btn btn-success">
                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
               </td>
+            </tr>
+            <tr *ngIf="usuarios.length <= 0" class="listaVazia">
+              <td colspan="6">Sem Informações Para Exibir</td>
             </tr>
           </tbody>
         </table>

@@ -22,16 +22,17 @@
           name="sobrenome"
         />
       </div>
-      <div class="col-md-3 md-3">
+      <div class="col-md-3">
         <input
-        type="date"
-        class="form-control"
-        id="inputData"
-        placeholder="Data Nascimento"
-        [(ngModel)]="usuario.dataNascimento"
-        name="data"
+          type="date"
+          class="form-control"
+          id="inputData"
+          placeholder="Data Nascimento"
+          [(ngModel)]="usuario.dataNascimento"
+          name="data"
         />
       </div>
+
     </div>
     <div class="row md-3">
       <div class="col md-3">
@@ -46,9 +47,12 @@
         />
       </div>
       <div class="col-md-3 md-3">
-        <select class="form-select" name="schooling" [(ngModel)]="usuario.escolaridade">
-          <option disabled>Selecione uma Escolaridade</option>
-          <option *ngFor="let e of escolaridades" [ngValue]="e">{{e}}</option>
+        <select
+          class="form-select"
+          name="schooling"
+          [(ngModel)]="usuario.escolaridade">
+          <option value="" selected disabled>Escolaridade</option>
+          <option *ngFor="let e of escolaridades" [ngValue]="e">{{ e }}</option>
         </select>
       </div>
     </div>
@@ -62,4 +66,3 @@
     </div>
   </div>
 </div>
-
